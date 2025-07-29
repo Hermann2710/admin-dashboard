@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://admin-dashboard-w5q4.onrender.com/",
   headers: {
     "Content-Type": "application/json",
   },
