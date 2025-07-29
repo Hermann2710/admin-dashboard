@@ -1,5 +1,6 @@
 import { Router } from "express"
 import {
+  deleteUser,
   getAllUsers,
   getMe,
   updateUserRole,
@@ -11,5 +12,6 @@ const router = Router()
 router.get("/me", requiredAuth, getMe)
 router.get("/", requiredAuth, requireAdmin, getAllUsers)
 router.patch("/:id/role", requiredAuth, requireAdmin, updateUserRole)
+router.delete("/:id", requiredAuth, requireAdmin, deleteUser)
 
 export default router

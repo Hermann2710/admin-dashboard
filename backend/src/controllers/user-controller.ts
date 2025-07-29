@@ -48,12 +48,26 @@ export const updateUserRole = async (req: Request, res: Response) => {
     user.role = role
     await user.save()
 
-    res
-      .status(200)
-      .json({
-        message: `Role mis à jour en ${role}`,
-        user: { id: user._id, role: user.role },
-      })
+    res.status(200).json({
+      message: `Role mis à jour en ${role}`,
+      user: { id: user._id, role: user.role },
+    })
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur serveur .",
+      error: (error as any).message,
+    })
+  }
+}
+
+export const deleteUser = async (req: Request, res: Response) => {
+  const userId = req.params.id
+
+  try {
+    const user = await User.findByIdAndDelete(userId)
+    if (!user)
+      return res.status(404).json({ message: "Utilisateur introuvable." })
+    res.status(200).json({ message: "Utilisateur supprimé avec succès !" })
   } catch (error) {
     res.status(500).json({
       message: "Erreur serveur .",
