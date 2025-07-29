@@ -34,7 +34,7 @@ export const requiredAuth = (
   }
 }
 
-export const reuiredAdmin = (
+export const requireAdmin = (
   req: Request,
   res: Response,
   next: NextFunction
