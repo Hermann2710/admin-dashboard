@@ -1,30 +1,85 @@
-# React + TypeScript + Vite
+# Admin Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce projet est un tableau de bord d’administration fullstack utilisant React, TypeScript, Vite pour le frontend, et Node.js/Express pour le backend.
 
-Currently, two official plugins are available:
+## 🚀 Fonctionnalités principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Authentification (login, inscription, gestion des utilisateurs)
+- Dashboard administrateur
+- Gestion des utilisateurs
+- Sécurité via middlewares
+- Architecture modulaire
 
-## Expanding the ESLint configuration
+## 🗂️ Structure du projet
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```
+admin-dashboard/
+  backend/      # API Express, logique métier, modèles, routes
+  frontend/     # Application React, pages, composants, contextes
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## ⚙️ Prérequis
+
+- Node.js >= 16.x
+- npm >= 8.x
+
+## 🛠️ Installation
+
+Clone le repo :
+
+```bash
+git clone <url-du-repo>
+cd admin-dashboard
+```
+
+Installe les dépendances pour le backend et le frontend :
+
+```bash
+cd backend
+npm install
+cd ../frontend
+npm install
+```
+
+## ▶️ Démarrage
+
+### Backend
+
+```bash
+cd backend
+npm run dev
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm run dev
+```
+
+L’application frontend sera accessible sur [http://localhost:5173](http://localhost:5173) (par défaut).
+
+## 📝 Scripts utiles
+
+Backend :
+
+- `npm run dev` – Démarre le serveur en mode développement
+- `npm run build` – Compile le projet
+
+Frontend :
+
+- `npm run dev` – Démarre le serveur de développement Vite
+- `npm run build` – Build de production
+
+## 📁 Détails des dossiers
+
+- `backend/src/controllers` – Logique des routes
+- `backend/src/models` – Modèles de données (Mongoose, etc.)
+- `backend/src/routes` – Définition des routes API
+- `frontend/src/pages` – Pages principales de l’interface
+- `frontend/src/components` – Composants réutilisables
+- `frontend/src/contexts` – Contextes React pour la gestion d’état
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! Ouvre une issue ou une pull request.
