@@ -4,30 +4,19 @@ import { NavLink, useNavigate } from "react-router-dom"
 
 type Props = {
   children: ReactNode
+  title: string
+  links: { label: string; path: string }[]
 }
 
-export default function AdminLayout({ children }: Props) {
+export default function SidebarLayout({ children, title, links }: Props) {
   const { logout, user } = useAuthContext()
   const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false)
 
   const handleLogout = () => {
     logout()
-    navigate("/login", {
-      replace: true,
-    })
+    navigate("/login")
   }
-
-  const links = [
-    {
-      label: "Tableau de bord",
-      path: "/dashboard",
-    },
-    {
-      label: "Mon Profile",
-      path: "/profile",
-    },
-  ]
 
   return (
     <div className='flex min-h-screen bg-gray-100'>
@@ -40,7 +29,7 @@ export default function AdminLayout({ children }: Props) {
       >
         <div className='p-6'>
           <h2 className='text-xl font-bold mb-8 text-blue-600 text-center'>
-            Admin Panel
+            {title}
           </h2>
           <nav className='space-y-4'>
             {links.map((link, key) => (
@@ -52,7 +41,7 @@ export default function AdminLayout({ children }: Props) {
                   `block py-2 px-4 rounded ${
                     isActive
                       ? "bg-blue-100 text-blue-700 font-semibold"
-                      : "hover:bg-gray-100 text-gray-700"
+                      : "hover:bg-gray-100 text-gray-700 font-semibold"
                   }`
                 }
               >

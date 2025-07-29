@@ -3,6 +3,7 @@ import { useAuthContext } from "../contexts/auth-context-helpers"
 import { FormEvent, useState } from "react"
 import { getErrorMessage } from "../utils"
 import axios from "../api/axios"
+import toast from "react-hot-toast"
 
 export default function Login() {
   const [email, setEmail] = useState<string>("")
@@ -17,9 +18,11 @@ export default function Login() {
     setError("")
 
     try {
+      toast.loading("Connexion...", { id: "login" })
       const res = await axios.post("/auth/login", { email, password })
-      const { token, user } = res.data
+      const { token, user, message } = res.data
 
+      toast.success(message, { id: "login" })
       login(token, user)
       navigate("/dashboard")
     } catch (error) {

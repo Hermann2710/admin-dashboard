@@ -3,6 +3,7 @@ import { useAuthContext } from "../contexts/auth-context-helpers"
 import { FormEvent, useState } from "react"
 import { getErrorMessage } from "../utils"
 import axios from "../api/axios"
+import toast from "react-hot-toast"
 
 export default function Register() {
   const [name, setName] = useState<string>("")
@@ -18,9 +19,11 @@ export default function Register() {
     setError("")
 
     try {
+      toast.loading("Inscription...", { id: "register" })
       const res = await axios.post("/auth/register", { name, email, password })
-      const { token, user } = res.data
+      const { token, user, message } = res.data
 
+      toast.success(message, { id: "register" })
       login(token, user)
       navigate("/dashboard")
     } catch (error) {
